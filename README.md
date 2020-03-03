@@ -21,7 +21,7 @@ This project has these features:
 
 ## Live Demo
 
-<!-- [Live Demo Link]() -->
+[Live Demo Link](https://men32z-learning-tracker-app.herokuapp.com/)
 
 ## Local Install
 
