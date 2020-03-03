@@ -11,12 +11,18 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 
 gem 'rubocop'
+
+gem 'webpacker'
+
+gem 'faker', git: 'https://github.com/stympy/faker'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'jwt'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -30,6 +36,16 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'rspec-rails', '~> 4.0.0.beta3'
+
+  # Capybara, the library that allows us to interact with the browser using Ruby
+  #gem 'capybara'
+
+  # The following two gems aid with the nuts and bolts
+  # of interacting with the browser.
+  #gem 'selenium-webdriver'
+  #gem 'webdrivers', '~> 3.0'
 end
 
 group :development do

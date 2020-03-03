@@ -86,7 +86,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Final Capstone Project [Microverse Curriculum] (https://www.microverse.org/)
+- Final Capstone Project [Microverse] (https://www.microverse.org/)
 
 ## 📝 License
 
