@@ -3,7 +3,8 @@ class MeasurementsController < ApplicationController
   before_action :set_subject_measurement, only: [:show, :update, :destroy]
 
   def index
-    json_response(@subject.measurements)
+    @measurements = Measurement.where(subject_id: @subject.id, user_id: current_user.id)
+    json_response(@measurements)
   end
 
   def show
@@ -11,7 +12,9 @@ class MeasurementsController < ApplicationController
   end
 
   def create
-    @subject.measurements.create!(measurement_params)
+    params = measurement_params
+    params["user_id"] = current_user.id
+    @subject.measurements.create!(params)
     json_response(@subject, :created)
   end
 
