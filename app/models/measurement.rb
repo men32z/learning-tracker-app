@@ -1,4 +1,5 @@
 class Measurement < ApplicationRecord
+  belongs_to :user
   belongs_to :subject
   validates :date_m, presence: true
   validates :units, presence: true, length: { minimum: 1 }
