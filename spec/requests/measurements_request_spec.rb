@@ -1,5 +1,121 @@
 require 'rails_helper'
 
-RSpec.describe "Measurements", type: :request do
+RSpec.describe 'Measurement API' do
+  let!(:subject) { create(:subject) }
+  let!(:measurements) { create_list(:measurement, 20, subject_id: subject.id) }
+  let(:subject_id) { subject.id }
+  let(:id) { measurements.first.id }
 
+  describe 'GET /subjects/:subject_id/measurements' do
+    before { get "/subjects/#{subject_id}/measurements" }
+
+    context 'when subject exists' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'returns all subject measurements' do
+        expect(json.size).to eq(20)
+      end
+    end
+
+    context 'when subject does not exist' do
+      let(:subject_id) { 0 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Subject/)
+      end
+    end
+  end
+
+  describe 'GET /subjects/:subject_id/measurements/:id' do
+    before { get "/subjects/#{subject_id}/measurements/#{id}" }
+
+    context 'when subject measurement exists' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'returns the measurement' do
+        expect(json['id']).to eq(id)
+      end
+    end
+
+    context 'when subject measurement does not exist' do
+      let(:id) { 0 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Measurement/)
+      end
+    end
+  end
+
+  describe 'POST /subjects/:subject_id/measurements' do
+    let(:valid_attributes) { { units: 35, date_m: Date.yesterday } }
+
+    context 'when request attributes are valid' do
+      before { post "/subjects/#{subject_id}/measurements", params: valid_attributes }
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
+    context 'when an invalid request' do
+      before { post "/subjects/#{subject_id}/measurements", params: {} }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a failure message' do
+        expect(response.body).to match(/(Date m can't be blank).*(Units can't be blank)/)
+      end
+    end
+  end
+
+  describe 'PUT /subjects/:subject_id/measurements/:id' do
+    let(:valid_attributes) { { units: 8 } }
+
+    before { put "/subjects/#{subject_id}/measurements/#{id}", params: valid_attributes }
+
+    context 'when measurement exists' do
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+      end
+
+      it 'updates the measurement' do
+        updated_measurement = Measurement.find(id)
+        expect(updated_measurement.units).to eq(8)
+      end
+    end
+
+    context 'when the measurement does not exist' do
+      let(:id) { 0 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Measurement/)
+      end
+    end
+  end
+
+  describe 'DELETE /subjects/:id' do
+    before { delete "/subjects/#{subject_id}/measurements/#{id}" }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+  end
 end
