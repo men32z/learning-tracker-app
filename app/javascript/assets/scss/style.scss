@@ -1,0 +1,33 @@
+// fonts
+@font-face {
+    font-family: 'Helvetica Neue Bold';
+    src: url(../fonts/helvetica-neue-bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Light';
+    src: url(../fonts/helvetica-neue-light.otf) format('opentype');
+}
+
+// colors
+
+$blue: #8ED3F1;
+$blueLight: #B3E1F6;
+$blueDark: #42B5E8;
+
+$gray: #8090A0;
+$grayLight: #8796A6;
+$grayDark: #74879B;
+
+$green: #C1EFBE;
+$greenLight: #D5F4D4;
+$greenDark: #ACE9A9;
+
+//mixins
+
+@mixin headline {
+  font-family: 'Helvetica Neue Bold';
+}
+@mixin general {
+  font-family: 'Helvetica Neue Light';
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../components/App';
-import './style.scss';
+import '../assets/scss/style.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
