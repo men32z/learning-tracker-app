@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: [:show, :update, :destroy]
+  before_action :set_subject, only: %i[show update destroy]
 
   def index
     @subjects = Subject.all

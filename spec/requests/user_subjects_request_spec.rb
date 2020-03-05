@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "UserSubjects", type: :request do
+RSpec.describe 'UserSubjects', type: :request do
   let(:user) { create(:user) }
   let!(:subjects) { create_list(:subject, 10) }
   let(:headers) { valid_headers }
@@ -56,7 +56,7 @@ RSpec.describe "UserSubjects", type: :request do
     context 'when the request is valid' do
       before { delete "/unregister_subject/#{subject_valid[0].id}", headers: headers }
 
-      it "remove relationship user - subject" do
+      it 'remove relationship user - subject' do
         expect(user.subjects.count).to eq(0)
       end
 
@@ -66,7 +66,7 @@ RSpec.describe "UserSubjects", type: :request do
     end
 
     context 'when the request is invalid' do
-      before { delete "/unregister_subject/0", headers: headers }
+      before { delete '/unregister_subject/0', headers: headers }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)

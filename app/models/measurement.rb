@@ -6,8 +6,6 @@ class Measurement < ApplicationRecord
   validate :date_cannot_be_after_today
 
   def date_cannot_be_after_today
-    if date_m.present? && date_m > Date.today
-      errors.add(:date_m, "can't set a future date")
-    end
+    errors.add(:date_m, "can't set a future date") if date_m.present? && date_m > Date.today
   end
 end
