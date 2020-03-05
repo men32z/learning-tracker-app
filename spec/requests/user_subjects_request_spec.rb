@@ -6,7 +6,7 @@ RSpec.describe "UserSubjects", type: :request do
   let(:headers) { valid_headers }
 
   describe 'POST /register_subject' do
-    let(:valid_attributes) { {subject_id: subjects.last.id }.to_json }
+    let(:valid_attributes) { { subject_id: subjects.last.id }.to_json }
 
     context 'when the request is valid' do
       before { post '/register_subject', params: valid_attributes, headers: headers }
@@ -46,13 +46,12 @@ RSpec.describe "UserSubjects", type: :request do
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
-
     end
   end
 
   describe 'DELETE /unregister_subject/:id' do
-    let(:subject_valid) {user.subjects << subjects.first}
-    let(:subject_valid2) {user.subjects << subjects.first}
+    let(:subject_valid) { user.subjects << subjects.first }
+    let(:subject_valid2) { user.subjects << subjects.first }
 
     context 'when the request is valid' do
       before { delete "/unregister_subject/#{subject_valid[0].id}", headers: headers }
@@ -72,7 +71,6 @@ RSpec.describe "UserSubjects", type: :request do
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
       end
-
     end
   end
 end

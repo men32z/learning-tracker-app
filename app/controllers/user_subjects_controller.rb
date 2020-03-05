@@ -10,6 +10,7 @@ class UserSubjectsController < ApplicationController
     current_user.subjects.delete(@subject)
     head :no_content
   end
+
   private
 
   def u_s_params

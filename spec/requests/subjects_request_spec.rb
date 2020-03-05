@@ -8,7 +8,7 @@ RSpec.describe 'Subjects API', type: :request do
   let(:headers) { valid_headers }
 
   describe 'GET /subjects' do
-    before { get '/subjects', params: {}, headers: headers  }
+    before { get '/subjects', params: {}, headers: headers }
     it 'returns subjects' do
       expect(json).not_to be_empty
       expect(json.size).to eq(10)
