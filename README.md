@@ -88,6 +88,10 @@ Give a ⭐️ if you like this project!
 
 - Final Capstone Project [Microverse] (https://www.microverse.org/)
 
-## 📝 License
+### Credits
+
+All the design info (color, typography, layouts) was based on the [Bodytrack.it - An iOs app - Branding, UX and UI](https://www.behance.net/gallery/13271423/Bodytrackit-An-iOs-app-Branding-UX-and-UI) Design idea by Gregoire Vella is licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
+
+### 📝 License
 
 MIT.
