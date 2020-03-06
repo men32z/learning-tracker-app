@@ -14,6 +14,7 @@ export default function App() {
       <div className="container">
       <Header />
       <Home />
+      <Menu />
       </div>
     </Router>
   );

@@ -32,8 +32,45 @@
 }
 
 .footer {
-  position: absolute;
+  width: 100%;
+  background-color: #020102;
+  position: fixed;
   bottom: 0;
+  a {
+    text-decoration: none;
+  }
+  ul {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    li {
+      width: 25%;
+      &.active {
+        background-color: $blueDark;
+        a {
+          color: white;
+        }
+      }
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        color: $grayLight;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 10px;
+      }
+      svg {
+        font-size: 1.5rem;
+      }
+      span {
+        @include general;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 .login-form {
@@ -120,6 +157,42 @@
     width: 33%;
     h3 {
       color: $grayLight;
+    }
+  }
+}
+
+.home-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 5px;
+  .home-subject {
+    width: 45%;
+    display: flex;
+    margin-top: 15px;
+    & > div {
+      display: flex;
+      padding: 10px;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      font-size: 2rem;
+      color: $blueLight;
+    }
+    & > div:nth-child(2){
+      color: lighten($grayLight, 10%);
+      flex-direction: column;
+    }
+    span {
+      font-size: 0.7rem;
+    }
+    .home-subject-text {
+      display: inline;
+      span:nth-child(1){
+        color: $gray;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
     }
   }
 }

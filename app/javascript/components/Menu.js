@@ -1,18 +1,35 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {library} from '../assets/plugins/fas.js';
 
 export default function Menu(){
   return (
     <nav className="footer">
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">
+            <FontAwesomeIcon icon={['fas', 'home']} />
+            <span>Home</span>
+          </Link>
+        </li>
+        <li className="active">
+          <Link to="/subjects">
+            <FontAwesomeIcon icon={['fas', 'book']} />
+            <span>Subjects</span>
+          </Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/measurements/new">
+            <FontAwesomeIcon icon={['fas', 'stopwatch']} />
+            <span>+ Measure</span>
+          </Link>
         </li>
         <li>
-          <Link to="/users">Users</Link>
+          <Link to="/signout">
+            <FontAwesomeIcon icon={['fas', 'sign-out-alt']} />
+            <span>Log Out</span>
+          </Link>
         </li>
       </ul>
     </nav>
