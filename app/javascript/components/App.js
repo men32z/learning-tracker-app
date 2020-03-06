@@ -1,11 +1,20 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Header from './Header';
+import Menu from './Menu';
+import Home from './temporalViews/Home';
 
-function App() {
+export default function App() {
   return (
-    <div>
-      Learning Tracker App
-    </div>
+    <Router>
+      <div className="container">
+      <Header />
+      <Home />
+      </div>
+    </Router>
   );
 }
-
-export default App;

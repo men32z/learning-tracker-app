@@ -1,33 +1,96 @@
-// fonts
-@font-face {
-    font-family: 'Helvetica Neue Bold';
-    src: url(../fonts/helvetica-neue-bold.ttf) format('truetype');
+@import './config.scss';
+
+@mixin formField {
+  margin-top: 15px;
+  color: $grayDark;
+  padding-left: 15px;
+  height: 45px;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+  background-color: #fafafa;
 }
 
-@font-face {
-    font-family: 'Helvetica Neue Light';
-    src: url(../fonts/helvetica-neue-light.otf) format('opentype');
+.full-screen {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
 }
 
-// colors
-
-$blue: #8ED3F1;
-$blueLight: #B3E1F6;
-$blueDark: #42B5E8;
-
-$gray: #8090A0;
-$grayLight: #8796A6;
-$grayDark: #74879B;
-
-$green: #C1EFBE;
-$greenLight: #D5F4D4;
-$greenDark: #ACE9A9;
-
-//mixins
-
-@mixin headline {
-  font-family: 'Helvetica Neue Bold';
+.header {
+  background-color: $blueDark;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 12vh;
+  h1 {
+    color: white;
+    font-size: 1.2rem;
+    letter-spacing: 1.5px;
+    padding-bottom: 10px;
+  }
 }
-@mixin general {
-  font-family: 'Helvetica Neue Light';
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.login-form {
+  position: relative;
+  background-color: white;
+  width: 80%;
+  border-radius: 3px;
+  min-width: 300px;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 120px;
+  padding-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  h2 {
+    font-size: 26px;
+    text-align: center;
+    padding: 10px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 70px;
+    & > * {
+      @include formField
+      &.button {
+        letter-spacing: 0.5px;
+        text-align: center;
+        color: #fff;
+        border-radius: 5px;
+        background-color: $grayDark;
+      }
+    }
+  }
+  .bot {
+    color: $grayDark;
+    background-color: lighten($grayLight, 30%);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-left: -30px;
+    padding: 20px;
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 3px 3px;
+    & > a {
+      color: black;
+      text-decoration: none;
+      margin-left: 10px;
+      &:hover{
+        color: $grayLight;
+      }
+    }
+  }
+}
+.login-form.signin-form {
+  margin-top: 40px;
 }

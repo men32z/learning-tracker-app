@@ -5,6 +5,9 @@
   "description": "This README would normally document whatever....",
   "dependencies": {
     "@babel/preset-react": "^7.8.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "@rails/webpacker": "4.2.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "postcss-flexbugs-fixes": "^4.2.0",
@@ -12,8 +15,10 @@
     "postcss-preset-env": "^6.7.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
+    "react-circle": "^1.1.1",
     "react-dom": "^16.13.0",
     "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
     "redux": "^4.0.5"
   },
   "devDependencies": {

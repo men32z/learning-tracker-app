@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   root 'home#index'
+  scope '/api' do
+    resources :subjects do
+      resources :measurements
+    end
 
-  resources :subjects do
-    resources :measurements
+    post 'auth/login', to: 'authentication#authenticate'
+    post 'signup', to: 'users#create'
+    post 'register_subject', to: 'user_subjects#create'
+    delete 'unregister_subject/:subject_id', to: 'user_subjects#destroy'
   end
-
-  post 'auth/login', to: 'authentication#authenticate'
-  post 'signup', to: 'users#create'
-  post 'register_subject', to: 'user_subjects#create'
-  delete 'unregister_subject/:subject_id', to: 'user_subjects#destroy'
+  get '*path', to: 'home#index'
 end
