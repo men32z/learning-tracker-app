@@ -1,19 +1,15 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Header from './Header';
 import Menu from './Menu';
-import Home from './temporalViews/Home';
+import Routes from './router/routes';
 
 export default function App() {
   return (
     <Router>
       <div className="container">
       <Header />
-      <Home />
+        <Routes />
       <Menu />
       </div>
     </Router>

@@ -1,10 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Link, withRouter} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {library} from '../assets/plugins/fas.js';
 
-export default function Menu(){
-  return (
+function Menu({isLogged}){
+  return !isLogged ? '' : (
     <nav className="footer">
       <ul>
         <li>
@@ -35,3 +36,7 @@ export default function Menu(){
     </nav>
   );
 }
+
+const mapStateToProps = state => ({isLogged: state.auth.isLogged})
+
+export default withRouter(connect(mapStateToProps)(Menu))

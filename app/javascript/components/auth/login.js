@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default function Login(){
   function handleOnSubmit(e){
@@ -15,7 +16,7 @@ export default function Login(){
         </form>
         <div className="bot">
           <span>Not a member?</span>
-          <a href="#"> Create an account</a>
+          <Link to="/signin">Create an account</Link>
         </div>
       </div>
     </div>

@@ -1,5 +1,7 @@
 const defaultProps = {
-  start: 'hello world',
+  auth: {
+    isLogged: false,
+  }
 };
 
 export default defaultProps;
