@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
-//import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 
 import App from '../components/App';
 import rootReducer from '../reducers';
 import '../assets/scss/style.scss';
 import defaultProps from '../data/defaultProps';
 
-//const store = createStore(rootReducer, defaultProps, applyMiddleware(...middlewares));
-const store = createStore(rootReducer, defaultProps);
+const store = createStore(rootReducer, defaultProps, applyMiddleware(thunk));
+
 const wrappedApp = (
   <Provider store={store}>
     <App />

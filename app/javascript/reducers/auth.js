@@ -1,24 +1,15 @@
-const authReducer = (state = {}, {type, payload}) =>{
+const authReducer = (auth = {}, {type, payload}) =>{
   switch(type) {
-        case 'FETCH_TOKEN_PENDING':
-            return {
-                ...state,
-                pending: true
-            }
-        case 'FETCH_TOKEN_SUCCESS':
-            return {
-                ...state,
-                pending: false,
-                token: payload
-            }
-        case 'FETCH_TOKEN_ERROR':
-            return {
-                ...state,
-                pending: false,
-                error: error
-            }
+        case 'SIGN_UP_OK':
+            return {...auth, isLogged: true, message: payload.message};
+        case 'SIGN_UP_BAD':
+            return {...auth, message: payload.message};
+        case 'CLEAN_AUTH_MESSAGE':
+            return {...auth, message: ''};
+        case 'LOGOUT':
+            return {...auth, isLogged: false, message: ''}
         default:
-            return state;
+            return auth;
     }
 }
 export default authReducer;

@@ -1,6 +1,8 @@
+import Storage from '../helpers/Storage';
 const defaultProps = {
   auth: {
-    isLogged: false,
+    isLogged: Storage.getToken() || false,
+    message: '',
   }
 };
 

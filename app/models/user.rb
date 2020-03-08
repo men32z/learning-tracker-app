@@ -4,5 +4,15 @@ class User < ApplicationRecord
   has_many :measurements
   has_and_belongs_to_many :subjects
 
-  validates_presence_of :name, :email, :password_digest
+  before_save :downcase_email
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates_presence_of :name, :password_digest
+  validates :email, presence: true, length: {maximum: 255},
+    format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
+
+  def downcase_email
+    self.email = email.downcase
+  end
 end

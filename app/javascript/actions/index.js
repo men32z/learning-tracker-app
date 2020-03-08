@@ -1,19 +1,25 @@
-function fetchUserPending() {
-    return {
-        type: 'FETCH_USER_PENDING'
-    }
+export function signUpOk(auth) {
+  return {
+      type: 'SIGN_UP_OK',
+      payload: auth,
+  }
 }
 
-function fetchUserSuccess(user) {
-    return {
-        type: 'FETCH_USER_SUCCESS'
-        user: user
-    }
+export function signUpBad(auth) {
+  return {
+      type: 'SIGN_UP_BAD',
+      payload: auth,
+  }
 }
 
-function fetchUserError(error) {
-    return {
-        type: 'FETCH_USER_ERROR'
-        error: error
-    }
+export function cleanAuthMessage() {
+  return {
+      type: 'CLEAN_AUTH_MESSAGE',
+  }
+}
+
+export function logout() {
+  return {
+      type: 'LOGOUT',
+  }
 }

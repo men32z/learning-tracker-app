@@ -3,8 +3,10 @@ import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {library} from '../assets/plugins/fas.js';
+import {logout} from '../actions';
+import Storage from '../helpers/Storage';
 
-function Menu({isLogged}){
+function Menu({isLogged, logout}){
   return !isLogged ? '' : (
     <nav className="footer">
       <ul>
@@ -27,10 +29,14 @@ function Menu({isLogged}){
           </Link>
         </li>
         <li>
-          <Link to="/signout">
+          <a href="#" onClick={(e) => {
+            e.preventDefault();
+            Storage.setToken('');
+            logout();
+          }}>
             <FontAwesomeIcon icon={['fas', 'sign-out-alt']} />
             <span>Log Out</span>
-          </Link>
+          </a>
         </li>
       </ul>
     </nav>
@@ -38,5 +44,8 @@ function Menu({isLogged}){
 }
 
 const mapStateToProps = state => ({isLogged: state.auth.isLogged})
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout()),
+});
 
-export default withRouter(connect(mapStateToProps)(Menu))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Menu))
