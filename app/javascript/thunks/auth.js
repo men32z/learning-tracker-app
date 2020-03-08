@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Storage from '../helpers/Storage';
-import {signUpOk, signUpBad} from '../actions';
+import { signUpOk, signUpBad } from '../actions';
 
 export const signUpThunk = ({
   name, email, password, passwordConfirmation,
@@ -30,7 +30,7 @@ export const signUpThunk = ({
 
 export const logInThunk = ({ email, password }) => dispatch => {
   axios
-    .post('/api/auth/login', { email, password}, { withCredentials: true })
+    .post('/api/auth/login', { email, password }, { withCredentials: true })
     .then(response => {
       if (response.status === 200) {
         Storage.setToken(response.data.auth_token);

@@ -1,8 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-function Header({isLogged}){
+function Header({ isLogged }) {
   return !isLogged ? '' : (
     <div className="header">
       <h1> Title </h1>
@@ -10,6 +11,10 @@ function Header({isLogged}){
   );
 }
 
-const mapStateToProps = state => ({isLogged: state.auth.isLogged})
+const mapStateToProps = state => ({ isLogged: state.auth.isLogged });
 
-export default withRouter(connect(mapStateToProps)(Header))
+Header.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+};
+
+export default withRouter(connect(mapStateToProps)(Header));
