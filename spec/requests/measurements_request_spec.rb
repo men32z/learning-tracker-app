@@ -8,8 +8,8 @@ RSpec.describe 'Measurement API' do
   let(:id) { measurements.first.id }
   let(:headers) { valid_headers }
 
-  describe 'GET /subjects/:subject_id/measurements' do
-    before { get "/subjects/#{subject_id}/measurements", params: {}, headers: headers }
+  describe 'GET /api/subjects/:subject_id/measurements' do
+    before { get "/api/subjects/#{subject_id}/measurements", params: {}, headers: headers }
 
     context 'when subject exists' do
       it 'returns status code 200' do
@@ -34,8 +34,8 @@ RSpec.describe 'Measurement API' do
     end
   end
 
-  describe 'GET /subjects/:subject_id/measurements/:id' do
-    before { get "/subjects/#{subject_id}/measurements/#{id}", params: {}, headers: headers }
+  describe 'GET /api/subjects/:subject_id/measurements/:id' do
+    before { get "/api/subjects/#{subject_id}/measurements/#{id}", params: {}, headers: headers }
 
     context 'when subject measurement exists' do
       it 'returns status code 200' do
@@ -60,11 +60,11 @@ RSpec.describe 'Measurement API' do
     end
   end
 
-  describe 'POST /subjects/:subject_id/measurements' do
+  describe 'POST /api/subjects/:subject_id/measurements' do
     let(:valid_attributes) { { units: 35, date_m: Date.yesterday }.to_json }
 
     context 'when request attributes are valid' do
-      before { post "/subjects/#{subject_id}/measurements", params: valid_attributes, headers: headers }
+      before { post "/api/subjects/#{subject_id}/measurements", params: valid_attributes, headers: headers }
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
@@ -72,7 +72,7 @@ RSpec.describe 'Measurement API' do
     end
 
     context 'when an invalid request' do
-      before { post "/subjects/#{subject_id}/measurements", params: {}, headers: headers }
+      before { post "/api/subjects/#{subject_id}/measurements", params: {}, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -84,10 +84,10 @@ RSpec.describe 'Measurement API' do
     end
   end
 
-  describe 'PUT /subjects/:subject_id/measurements/:id' do
+  describe 'PUT /api/subjects/:subject_id/measurements/:id' do
     let(:valid_attributes) { { units: 8 }.to_json }
 
-    before { put "/subjects/#{subject_id}/measurements/#{id}", params: valid_attributes, headers: headers }
+    before { put "/api/subjects/#{subject_id}/measurements/#{id}", params: valid_attributes, headers: headers }
 
     context 'when measurement exists' do
       it 'returns status code 204' do
@@ -113,8 +113,8 @@ RSpec.describe 'Measurement API' do
     end
   end
 
-  describe 'DELETE /subjects/:id' do
-    before { delete "/subjects/#{subject_id}/measurements/#{id}", headers: headers }
+  describe 'DELETE /api/subjects/:id' do
+    before { delete "/api/subjects/#{subject_id}/measurements/#{id}", headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

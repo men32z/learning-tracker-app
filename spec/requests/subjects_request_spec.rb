@@ -7,8 +7,8 @@ RSpec.describe 'Subjects API', type: :request do
 
   let(:headers) { valid_headers }
 
-  describe 'GET /subjects' do
-    before { get '/subjects', params: {}, headers: headers }
+  describe 'GET /api/subjects' do
+    before { get '/api/subjects', params: {}, headers: headers }
     it 'returns subjects' do
       expect(json).not_to be_empty
       expect(json.size).to eq(10)
@@ -19,8 +19,8 @@ RSpec.describe 'Subjects API', type: :request do
     end
   end
 
-  describe 'GET /subjects/:id' do
-    before { get "/subjects/#{subject_id}", params: {}, headers: headers }
+  describe 'GET /api/subjects/:id' do
+    before { get "/api/subjects/#{subject_id}", params: {}, headers: headers }
 
     context 'when the record exists' do
       it 'returns the subject' do
@@ -46,11 +46,11 @@ RSpec.describe 'Subjects API', type: :request do
     end
   end
 
-  describe 'POST /subjects' do
+  describe 'POST /api/subjects' do
     let(:valid_attributes) { { name: 'HTML5', desc: 'asdf lasdf asfas' }.to_json }
 
     context 'when the request is valid' do
-      before { post '/subjects', params: valid_attributes, headers: headers }
+      before { post '/api/subjects', params: valid_attributes, headers: headers }
 
       it 'creates a subject' do
         expect(json['name']).to eq('HTML5')
@@ -63,7 +63,7 @@ RSpec.describe 'Subjects API', type: :request do
 
     context 'when the request is invalid' do
       let(:invalid_attributes) { { name: nil }.to_json }
-      before { post '/subjects', params: invalid_attributes, headers: headers }
+      before { post '/api/subjects', params: invalid_attributes, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -76,11 +76,11 @@ RSpec.describe 'Subjects API', type: :request do
     end
   end
 
-  describe 'PUT /subjects/:id' do
+  describe 'PUT /api/subjects/:id' do
     let(:valid_attributes) { { name: 'HTML5.1' }.to_json }
 
     context 'when the record exists' do
-      before { put "/subjects/#{subject_id}", params: valid_attributes, headers: headers }
+      before { put "/api/subjects/#{subject_id}", params: valid_attributes, headers: headers }
 
       it 'updates the record' do
         expect(response.body).to be_empty
@@ -92,8 +92,8 @@ RSpec.describe 'Subjects API', type: :request do
     end
   end
 
-  describe 'DELETE /subjects/:id' do
-    before { delete "/subjects/#{subject_id}", params: {}, headers: headers }
+  describe 'DELETE /api/subjects/:id' do
+    before { delete "/api/subjects/#{subject_id}", params: {}, headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
