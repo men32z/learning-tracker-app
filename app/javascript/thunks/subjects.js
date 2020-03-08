@@ -25,3 +25,5 @@ export const subjectsThunk = () => dispatch => {
       dispatch(subjectsBad(error.response.data));
     });
 };
+
+export const otherThunk = () => {};

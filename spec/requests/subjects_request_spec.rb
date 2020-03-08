@@ -99,4 +99,14 @@ RSpec.describe 'Subjects API', type: :request do
       expect(response).to have_http_status(204)
     end
   end
+
+  describe 'GET /api/subjects/mine' do
+    it 'set a subject and returns my subjects with status 200' do
+      user.subjects << subjects.first
+      get '/api/subjects/mine', params: {}, headers: headers
+      expect(json).not_to be_empty
+      expect(json.size).to eq(1)
+      expect(response).to have_http_status(200)
+    end
+  end
 end

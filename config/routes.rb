@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   scope '/api' do
+    get 'subjects/mine', to: 'subjects#my_subjects'
     resources :subjects do
       resources :measurements
     end

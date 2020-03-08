@@ -9,23 +9,23 @@ import { logout } from '../actions';
 import Storage from '../helpers/Storage';
 
 function Menu({ isLogged, logout }) {
-  let {pathname} = useLocation();
+  const { pathname } = useLocation();
   return !isLogged ? '' : (
     <nav className="footer">
       <ul>
-        <li className={pathname === '/' ? 'active': ''}>
+        <li className={pathname === '/' ? 'active' : ''}>
           <Link to="/">
             <FontAwesomeIcon icon={['fas', 'home']} />
             <span>Home</span>
           </Link>
         </li>
-        <li className={pathname === '/subjects' ? 'active': ''}>
+        <li className={pathname === '/subjects' ? 'active' : ''}>
           <Link to="/subjects">
             <FontAwesomeIcon icon={['fas', 'book']} />
             <span>Subjects</span>
           </Link>
         </li>
-        <li  className={pathname === '/measurements/new' ? 'active': ''}>
+        <li className={pathname === '/measurements/new' ? 'active' : ''}>
           <Link to="/measurements/new">
             <FontAwesomeIcon icon={['fas', 'stopwatch']} />
             <span>+ Measure</span>

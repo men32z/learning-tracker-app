@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -6,7 +6,7 @@ import Subject from './Subject';
 import { subjectsThunk } from '../thunks/subjects';
 
 
-function Subjects({subjects, fetchSubjects}) {
+function Subjects({ subjects, fetchSubjects }) {
   useEffect(() => {
     fetchSubjects();
   }, []);
@@ -16,8 +16,8 @@ function Subjects({subjects, fetchSubjects}) {
       <div className="row">
         <div className="subjects-list">
           {subjects.map(x => (
-              <Subject key={x.id} subject={x} />
-            ))}
+            <Subject key={x.id} subject={x} />
+          ))}
         </div>
       </div>
     </div>

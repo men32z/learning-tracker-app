@@ -14,7 +14,7 @@ export function subjectsBad(error) {
 
 export function subjectsLoading() {
   return {
-    type: 'SUBJECTS_LOADING'
+    type: 'SUBJECTS_LOADING',
   };
 }
 
