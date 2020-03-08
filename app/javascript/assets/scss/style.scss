@@ -196,3 +196,28 @@
     }
   }
 }
+
+
+.subjects-list {
+  display: flex;
+  flex-direction: column;
+  .subject-list-item {
+    width: 100%;
+    display: flex;
+    margin-top: 5px;
+    & > div {
+      display: flex;
+      padding: 10px;
+      justify-content: center;
+      align-items: flex-start;
+      font-size: 2rem;
+      color: $blueLight;
+    }
+    & > div:nth-child(2){
+      color: lighten($grayLight, 10%);
+    }
+    span {
+      font-size: 1.1rem;
+    }
+  }
+}
