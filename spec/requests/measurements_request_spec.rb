@@ -120,4 +120,16 @@ RSpec.describe 'Measurement API' do
       expect(response).to have_http_status(204)
     end
   end
+
+  describe 'GET /api/measurements' do
+    before { get '/api/measurements', params: {}, headers: headers }
+
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
+    end
+
+    it 'returns all subject measurements' do
+      expect(json.size).to eq(20)
+    end
+  end
 end

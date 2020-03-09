@@ -1,10 +1,14 @@
 class MeasurementsController < ApplicationController
-  before_action :set_subject
+  before_action :set_subject, except: %i[my_measurements]
   before_action :set_subject_measurement, only: %i[show update destroy]
 
   def index
     @measurements = Measurement.where(subject_id: @subject.id, user_id: current_user.id)
     json_response(@measurements)
+  end
+
+  def my_measurements
+    json_response(current_user.measurements)
   end
 
   def show
