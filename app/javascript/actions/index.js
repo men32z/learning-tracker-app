@@ -1,3 +1,43 @@
+export function myMeasurementsOk(subject) {
+  return {
+    type: 'MY_MEASUREMENTS_OK',
+    payload: subject,
+  };
+}
+
+export function myMeasurementsBad(error) {
+  return {
+    type: 'MY_MEASUREMENTS_BAD',
+    payload: error,
+  };
+}
+
+export function myMeasurementsLoading() {
+  return {
+    type: 'MY_MEASUREMENTS_LOADING',
+  };
+}
+
+export function mySubjectsOk(subject) {
+  return {
+    type: 'MY_SUBJECTS_OK',
+    payload: subject,
+  };
+}
+
+export function mySubjectsBad(error) {
+  return {
+    type: 'MY_SUBJECTS_BAD',
+    payload: error,
+  };
+}
+
+export function mySubjectsLoading() {
+  return {
+    type: 'MY_SUBJECTS_LOADING',
+  };
+}
+
 export function subjectsOk(subject) {
   return {
     type: 'SUBJECTS_OK',

@@ -7,7 +7,13 @@ const defaultProps = {
   },
   subject: {
     subjects: [],
+    mySubjects: [],
     loading: false,
+    myLoading: false,
+  },
+  measurement: {
+    myMeasurements: [],
+    myLoading: false,
   },
 };
 

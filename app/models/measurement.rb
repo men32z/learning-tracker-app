@@ -5,6 +5,8 @@ class Measurement < ApplicationRecord
   validates :units, presence: true, length: { minimum: 1 }
   validate :date_cannot_be_after_today
 
+  scope :date_m, ->(date){ where("date_m = ?", date) if date.present? }
+
   def date_cannot_be_after_today
     errors.add(:date_m, "can't set a future date") if date_m.present? && date_m > Date.today
   end

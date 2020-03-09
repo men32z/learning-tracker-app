@@ -3,12 +3,15 @@ class MeasurementsController < ApplicationController
   before_action :set_subject_measurement, only: %i[show update destroy]
 
   def index
-    @measurements = Measurement.where(subject_id: @subject.id, user_id: current_user.id)
+    @measurements = Measurement
+      .where(subject_id: @subject.id, user_id: current_user.id)
     json_response(@measurements)
   end
 
   def my_measurements
-    json_response(current_user.measurements)
+    measurements = current_user.measurements
+      .date_m(params[:date] || '')
+    json_response(measurements)
   end
 
   def show

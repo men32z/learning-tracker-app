@@ -1,6 +1,9 @@
 import axios from 'axios';
 import Storage from '../helpers/Storage';
-import { subjectsOk, subjectsBad, subjectsLoading } from '../actions';
+import {
+  subjectsOk, subjectsBad, subjectsLoading ,
+  mySubjectsOk, mySubjectsBad, mySubjectsLoading ,
+} from '../actions';
 
 export const subjectsThunk = () => dispatch => {
   dispatch(subjectsLoading());
@@ -26,4 +29,26 @@ export const subjectsThunk = () => dispatch => {
     });
 };
 
-export const otherThunk = () => {};
+export const mySubjectsThunk = () => dispatch => {
+  dispatch(mySubjectsLoading());
+
+  axios
+    .get(
+      '/api/subjects/mine',
+      {
+        headers: {
+          Authorization: `Bearer ${Storage.getToken()}`,
+        },
+      },
+      { withCredentials: true },
+    )
+    .then(response => {
+      if (response.status === 200) {
+        dispatch(mySubjectsOk(response.data));
+      }
+      return response.data;
+    })
+    .catch(error => {
+      dispatch(mySubjectsBad(error.response.data));
+    });
+};
