@@ -14,6 +14,9 @@ function Routes({ isLogged }) {
       <PrivateRoute exact path="/" isLogged={isLogged}>
         <Home />
       </PrivateRoute>
+      <PrivateRoute path="/home/:date" isLogged={isLogged}>
+        <Home />
+      </PrivateRoute>
       <PrivateRoute exact path="/subjects" isLogged={isLogged}>
         <Subjects />
       </PrivateRoute>

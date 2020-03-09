@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MySubject from './MySubject';
-import Time from '../helpers/Time';
 import { mySubjectsThunk } from '../thunks/subjects';
 import { myMeasurementsThunk } from '../thunks/measurements';
 
 
-function MySubjects({ subjects, fetchSubjects, measurements, fetchMesasurements }) {
-  useEffect(() => {
+function MySubjects({ subjects, fetchSubjects, measurements, fetchMesasurements, date }) {
+  useEffect(() => {  
     fetchSubjects();
-    fetchMesasurements(Time.today());
-  }, []);
+    fetchMesasurements(date);
+  }, [date]);
 
   return (
     <div className="row">
@@ -28,6 +27,7 @@ function MySubjects({ subjects, fetchSubjects, measurements, fetchMesasurements 
 }
 
 MySubjects.propTypes = {
+  date: PropTypes.string.isRequired,
   subjects: PropTypes.arrayOf(PropTypes.object).isRequired,
   fetchSubjects: PropTypes.func.isRequired,
   measurements: PropTypes.arrayOf(PropTypes.object).isRequired,
