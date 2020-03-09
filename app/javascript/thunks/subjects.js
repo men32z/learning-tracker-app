@@ -2,6 +2,7 @@ import axios from 'axios';
 import Storage from '../helpers/Storage';
 import {
   subjectsOk, subjectsBad, subjectsLoading ,
+  statisticsSubjects, statisticsLoadingSubjects,
   mySubjectsOk, mySubjectsBad, mySubjectsLoading ,
 } from '../actions';
 
@@ -31,7 +32,7 @@ export const subjectsThunk = () => dispatch => {
 
 export const mySubjectsThunk = () => dispatch => {
   dispatch(mySubjectsLoading());
-
+  dispatch(statisticsLoadingSubjects());
   axios
     .get(
       '/api/subjects/mine',
@@ -45,10 +46,12 @@ export const mySubjectsThunk = () => dispatch => {
     .then(response => {
       if (response.status === 200) {
         dispatch(mySubjectsOk(response.data));
+        dispatch(statisticsSubjects(response.data.length));
       }
       return response.data;
     })
     .catch(error => {
       dispatch(mySubjectsBad(error.response.data));
+      dispatch(statisticsSubjects(0));
     });
 };

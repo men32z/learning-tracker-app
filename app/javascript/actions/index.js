@@ -1,3 +1,36 @@
+export function statisticsSubjects(subjects) {
+  return {
+    type: 'STATISTICS_SUBJECTS',
+    payload: subjects,
+  };
+}
+
+export function statisticsMeasurements(measurements) {
+  return {
+    type: 'STATISTICS_MEASUREMENTS',
+    payload: measurements,
+  };
+}
+
+export function statisticsMeasurementsBad(measurements) {
+  return {
+    type: 'STATISTISCS_MEASUREMENTS_BAD',
+    payload: measurements,
+  };
+}
+
+export function statisticsLoadingSubjects() {
+  return {
+    type: 'STATISTICS_LOADING_SUBJECTS',
+  };
+}
+
+export function statisticsLoadingMeasurements() {
+  return {
+    type: 'STATISTICS_LOADING_MEASUREMENTS',
+  };
+}
+
 export function myMeasurementsOk(subject) {
   return {
     type: 'MY_MEASUREMENTS_OK',
