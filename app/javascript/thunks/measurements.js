@@ -29,6 +29,7 @@ export const myMeasurementsThunk = (date) => dispatch => {
       return response.data;
     })
     .catch(error => {
+      Storage.checkToken(error);
       dispatch(myMeasurementsBad(error.response.data));
       dispatch(statisticsMeasurementsBad());
     });

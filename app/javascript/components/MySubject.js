@@ -6,7 +6,7 @@ import { library } from '../assets/plugins/fas.js';
 
 export default function MySubject({subject: {image, name}, measurements}){
   return (
-    <div className="home-subject bg-white">
+    <a className="home-subject bg-white">
       <div>
         <FontAwesomeIcon icon={image.split(' ')} />
       </div>
@@ -17,7 +17,7 @@ export default function MySubject({subject: {image, name}, measurements}){
           <span>Minutes</span>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 

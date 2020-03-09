@@ -26,6 +26,7 @@ export const subjectsThunk = () => dispatch => {
       return response.data;
     })
     .catch(error => {
+      Storage.checkToken(error);
       dispatch(subjectsBad(error.response.data));
     });
 };
@@ -51,6 +52,7 @@ export const mySubjectsThunk = () => dispatch => {
       return response.data;
     })
     .catch(error => {
+      Storage.checkToken(error);
       dispatch(mySubjectsBad(error.response.data));
       dispatch(statisticsSubjects(0));
     });
