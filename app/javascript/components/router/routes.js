@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, withRouter } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
+import Measurements from '../Measurements';
 import Home from '../Home';
 import Subjects from '../Subjects';
 import LogIn from '../auth/LogIn';
@@ -19,6 +20,9 @@ function Routes({ isLogged }) {
       </PrivateRoute>
       <PrivateRoute exact path="/subjects" isLogged={isLogged}>
         <Subjects />
+      </PrivateRoute>
+      <PrivateRoute path="/my-subject/:id" isLogged={isLogged}>
+        <Measurements />
       </PrivateRoute>
       <PrivateRoute path="/login" isLogged={isLogged} inverse>
         <LogIn />

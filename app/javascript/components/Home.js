@@ -1,16 +1,15 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Circle from 'react-circle';
 /* eslint-disable-next-line */
 import { library } from '../assets/plugins/fas.js';
-import { useParams} from "react-router";
-import { Link } from "react-router-dom";
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import Time from '../helpers/Time';
 import Statistics from './Statistics';
 import MySubjects from './MySubjects';
 
 export default function Home() {
-  let { date } = useParams();
+  const { date } = useParams();
   const dateToday = date || Time.today();
   return (
     <div className="bg-gray full-screen">

@@ -18,9 +18,15 @@ const defaultProps = {
   statistics: {
     loadingSubjects: false,
     loadingMeasurements: false,
-    subjects: {id: 1, name: 'Subjects', total:0, goal: 8 },
-    measurements: {id: 2, name: 'Measurements', total:0, goal: 12},
-    minutes: {id: 3, name: 'Minutes', total:0, goal:0 },
+    subjects: {
+      id: 1, name: 'Subjects', total: 0, goal: 8,
+    },
+    measurements: {
+      id: 2, name: 'Measurements', total: 0, goal: 12,
+    },
+    minutes: {
+      id: 3, name: 'Minutes', total: 0, goal: 0,
+    },
   },
 };
 

@@ -1,9 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Circle from 'react-circle';
 import { colors } from '../data/styles';
 
-function Statistics({statistics: {minutes, subjects, measurements, loadingSubjects, loadingMeasurements}}){
+function Statistics({
+  statistics: {
+    minutes, subjects, measurements, loadingSubjects, loadingMeasurements,
+  },
+}) {
   const style = {
     font: 'bold 7rem Helvetica, Arial, sans-serif',
   };
@@ -15,7 +20,7 @@ function Statistics({statistics: {minutes, subjects, measurements, loadingSubjec
     <div className="home-circles">
       <div>
         <Circle
-          progress={subjects.goal === 0  ? 100 : Math.floor((subjects.total * 100)/  subjects.goal)}
+          progress={subjects.goal === 0 ? 100 : Math.floor((subjects.total * 100) / subjects.goal)}
           progressColor="#8EE289"
           textStyle={style}
           textColor={colors.grayDark}
@@ -24,7 +29,8 @@ function Statistics({statistics: {minutes, subjects, measurements, loadingSubjec
       </div>
       <div>
         <Circle
-          progress={measurements.goal === 0  ? 100 : Math.floor((measurements.total * 100)/  measurements.goal)}
+          progress={measurements.goal === 0 ? 100
+            : Math.floor((measurements.total * 100) / measurements.goal)}
           progressColor="#8EE289"
           textStyle={style}
           textColor={colors.grayDark}
@@ -33,7 +39,8 @@ function Statistics({statistics: {minutes, subjects, measurements, loadingSubjec
       </div>
       <div>
         <Circle
-          progress={subjects.total === 0  ? 100 : Math.floor((minutes.total * 100)/  (subjects.total * 60))}
+          progress={subjects.total === 0 ? 100
+            : Math.floor((minutes.total * 100) / (subjects.total * 60))}
           progressColor="#8EE289"
           textStyle={style}
           textColor={colors.grayDark}
@@ -43,6 +50,16 @@ function Statistics({statistics: {minutes, subjects, measurements, loadingSubjec
     </div>
   );
 }
+
+Statistics.propTypes = {
+  statistics: PropTypes.shape({
+    minutes: PropTypes.object,
+    subjects: PropTypes.object,
+    measurements: PropTypes.object,
+    loadingSubjects: PropTypes.bool,
+    loadingMeasurements: PropTypes.bool,
+  }).isRequired,
+};
 
 const mapStateToProps = state => ({
   statistics: state.statistics,

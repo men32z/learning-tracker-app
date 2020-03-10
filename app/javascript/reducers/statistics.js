@@ -1,13 +1,17 @@
 const statisticsReducer = (statistics = {}, { type, payload }) => {
   switch (type) {
     case 'STATISTICS_SUBJECTS':
-      return { ...statistics, subjects: {...statistics.subjects, total: payload}, loadingSubjects: false };
+      return {
+        ...statistics,
+        subjects: { ...statistics.subjects, total: payload },
+        loadingSubjects: false,
+      };
     case 'STATISTICS_MEASUREMENTS':
       return {
         ...statistics,
-        measurements: {...statistics.measurements, total: payload.length},
-        minutes: {...statistics.minutes, total: payload.reduce(((a,b) => a + b.units), 0)},
-        loadingMeasurements: false
+        measurements: { ...statistics.measurements, total: payload.length },
+        minutes: { ...statistics.minutes, total: payload.reduce(((a, b) => a + b.units), 0) },
+        loadingMeasurements: false,
       };
     case 'STATISTICS_MEASUREMENTS_BAD':
       return { ...statistics, loadingMeasurements: false };

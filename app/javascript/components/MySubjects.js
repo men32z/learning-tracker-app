@@ -7,8 +7,10 @@ import { mySubjectsThunk } from '../thunks/subjects';
 import { myMeasurementsThunk } from '../thunks/measurements';
 
 
-function MySubjects({ subjects, fetchSubjects, measurements, fetchMesasurements, date }) {
-  useEffect(() => {  
+function MySubjects({
+  subjects, fetchSubjects, measurements, fetchMesasurements, date,
+}) {
+  useEffect(() => {
     fetchSubjects();
     fetchMesasurements(date);
   }, [date]);
@@ -17,9 +19,11 @@ function MySubjects({ subjects, fetchSubjects, measurements, fetchMesasurements,
     <div className="row">
       <div className="home-subjects">
         {subjects.map(x => (
-          <MySubject key={x.id}
+          <MySubject
+            key={x.id}
             subject={x}
-            measurements={measurements.filter(y=> y.subject_id === x.id)} />
+            measurements={measurements.filter(y => y.subject_id === x.id)}
+          />
         ))}
       </div>
     </div>
@@ -41,7 +45,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchSubjects: () => dispatch(mySubjectsThunk()),
-  fetchMesasurements: (date) => dispatch(myMeasurementsThunk(date)),
+  fetchMesasurements: date => dispatch(myMeasurementsThunk(date)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MySubjects));

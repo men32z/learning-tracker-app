@@ -8,13 +8,12 @@ export default class Storage {
     return token;
   }
 
-  static checkToken(error){
-    if (error && error.response && error.response.data &&
-      error.response.data.message =="Signature has expired"){
-        Storage.setToken('');
-        location.reload();
-        return false;
-      } else return true;
-
+  static checkToken(error) {
+    if (error && error.response && error.response.data
+      && error.response.data.message === 'Signature has expired') {
+      Storage.setToken('');
+      window.location.reload();
+      return false;
+    } return true;
   }
 }

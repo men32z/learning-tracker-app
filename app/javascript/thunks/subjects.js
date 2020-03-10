@@ -1,9 +1,9 @@
 import axios from 'axios';
 import Storage from '../helpers/Storage';
 import {
-  subjectsOk, subjectsBad, subjectsLoading ,
+  subjectsOk, subjectsBad, subjectsLoading,
   statisticsSubjects, statisticsLoadingSubjects,
-  mySubjectsOk, mySubjectsBad, mySubjectsLoading ,
+  mySubjectsOk, mySubjectsBad, mySubjectsLoading,
 } from '../actions';
 
 export const subjectsThunk = () => dispatch => {
