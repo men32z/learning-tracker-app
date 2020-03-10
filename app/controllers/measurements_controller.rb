@@ -4,7 +4,7 @@ class MeasurementsController < ApplicationController
 
   def index
     @measurements = Measurement
-      .where(subject_id: @subject.id, user_id: current_user.id)
+      .where(subject_id: @subject.id, user_id: current_user.id).last_week
     json_response(@measurements)
   end
 
@@ -21,8 +21,8 @@ class MeasurementsController < ApplicationController
   def create
     params = measurement_params
     params['user_id'] = current_user.id
-    @subject.measurements.create!(params)
-    json_response(@subject, :created)
+    measure = @subject.measurements.create!(params)
+    json_response(measure, :created)
   end
 
   def update

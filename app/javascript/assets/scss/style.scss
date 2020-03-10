@@ -283,3 +283,51 @@
     color: white;
   }
 }
+
+.last-div {
+  padding-bottom: 11vh !important;
+}
+
+.new-measure {
+  height: 80vh;
+  select {
+    @include inputStyle;
+  }
+  .measure-date {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    input {
+      @include inputStyle;
+    }
+  }
+  .circle {
+    padding:10px;
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+@mixin button_c {
+  color: white;
+  padding: 10px;
+  font-size: 1.5rem;
+  border-radius: 6px;
+}
+
+.button-red {
+  @include button_c;
+  background-color: #fc2c03;
+}
+
+.button-green {
+  @include button_c;
+  background-color: $greenDark;
+}

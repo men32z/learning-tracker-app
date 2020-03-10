@@ -1,4 +1,5 @@
 import Storage from '../helpers/Storage';
+import Time from '../helpers/Time';
 
 const defaultProps = {
   auth: {
@@ -28,6 +29,16 @@ const defaultProps = {
       id: 3, name: 'Minutes', total: 0, goal: 0,
     },
   },
+  measure: {
+    item: {
+      id: null,
+      units: 0,
+      date_m: Time.today(),
+      subject_id: null,
+    },
+    message: '',
+    loading: false,
+  }
 };
 
 export default defaultProps;

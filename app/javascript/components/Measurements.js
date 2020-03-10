@@ -36,7 +36,7 @@ function Measurements({ measurements, fetchMeasurements }) {
           {yesterday.length > 0 ? yesterday.map(x => <Measurement key={x.id} measurement={x} />) : noRecords}
         </div>
         <div className="measurements-title"><span>Last week</span></div>
-        <div className="subjects-list">
+        <div className="subjects-list last-div">
           {lastWeek.length > 0 ? lastWeek.map(x => <Measurement key={x.id} measurement={x} />) : noRecords}
         </div>
       </div>

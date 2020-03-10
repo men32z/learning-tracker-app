@@ -5,6 +5,7 @@ import { Switch, withRouter } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import Measurements from '../Measurements';
 import Home from '../Home';
+import Measure from '../Measure';
 import Subjects from '../Subjects';
 import LogIn from '../auth/LogIn';
 import SignUp from '../auth/SignUp';
@@ -14,6 +15,9 @@ function Routes({ isLogged }) {
     <Switch>
       <PrivateRoute exact path="/" isLogged={isLogged}>
         <Home />
+      </PrivateRoute>
+      <PrivateRoute exact path="/measurements/new" isLogged={isLogged}>
+        <Measure />
       </PrivateRoute>
       <PrivateRoute path="/home/:date" isLogged={isLogged}>
         <Home />

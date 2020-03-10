@@ -1,3 +1,23 @@
+export function measureOk(measure) {
+  return {
+    type: 'MEASURE_OK',
+    payload: measure,
+  };
+}
+
+export function measureBad(data) {
+  return {
+    type: 'MEASURE_BAD',
+    payload: data,
+  };
+}
+
+export function measureLoading() {
+  return {
+    type: 'MEASURE_LOADING',
+  };
+}
+
 export function statisticsSubjects(subjects) {
   return {
     type: 'STATISTICS_SUBJECTS',

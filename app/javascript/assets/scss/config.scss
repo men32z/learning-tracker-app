@@ -33,6 +33,16 @@ $greenDark: #ACE9A9;
 @mixin general {
   font-family: 'Helvetica Neue Light';
 }
+@mixin inputStyle {
+  color: #888888;
+  padding-left: 15px;
+  height: 45px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 6px;
+  border: solid 1px #e8e8e8;
+  background-color: #ffffff;
+}
 
 // resets
 
