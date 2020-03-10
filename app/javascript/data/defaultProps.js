@@ -2,7 +2,7 @@ import Storage from '../helpers/Storage';
 
 const defaultProps = {
   auth: {
-    isLogged: Storage.getToken() && Storage.getToken() !== '',
+    isLogged: (Storage.getToken() !== '' && Storage.getToken() !== 'undefined'),
     message: '',
   },
   subject: {

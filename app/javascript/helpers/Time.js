@@ -17,19 +17,23 @@ export default class Time {
   }
 
   static yesterday(d) {
-    const date = new Date(d.split('-').map(x => parseInt(x, 10)));
+    const date = Time.ts(d);
     date.setDate(date.getDate() - 1);
     return Time.aString(date);
   }
 
   static tomorrow(d) {
-    const date = new Date(d.split('-').map(x => parseInt(x, 10)));
+    const date = Time.ts(d);
     date.setDate(date.getDate() + 1);
     return Time.aString(date);
   }
 
+  static ts(d) {
+    return new Date(d.split('-').map(x => parseInt(x, 10)))
+  }
+
   static format(d) {
-    const date = new Date(d.split('-').map(x => parseInt(x, 10)));
+    const date = Time.ts(d);
     return `${date.getDate()} ${Time.getMonthName(date.getMonth())} ${date.getFullYear()}`;
   }
 }

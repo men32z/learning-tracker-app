@@ -17,6 +17,7 @@
 }
 
 .header {
+  position: relative;
   background-color: $blueDark;
   display: flex;
   justify-content: center;
@@ -166,6 +167,9 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 5px;
+  a {
+    text-decoration: none;
+  }
   .home-subject {
     width: 45%;
     display: flex;
@@ -176,14 +180,17 @@
       justify-content: center;
       align-items: center;
       width: 50%;
-      font-size: 2rem;
       color: $blueLight;
+    }
+    & > div:nth-child(1){
+      font-size: 2rem;
     }
     & > div:nth-child(2){
       color: lighten($grayLight, 10%);
       flex-direction: column;
     }
     span {
+      margin-left: 5px;
       font-size: 0.7rem;
     }
     .home-subject-text {
@@ -201,6 +208,9 @@
 .subjects-list {
   display: flex;
   flex-direction: column;
+  a {
+    text-decoration: none;
+  }
   .subject-list-item {
     width: 100%;
     display: flex;
@@ -219,5 +229,57 @@
     span {
       font-size: 1.1rem;
     }
+  }
+}
+
+.measurement-circle {
+  width: 60px;
+  height: 60px;
+}
+.measurement-date {
+  align-items: center !important;
+  color: $grayDark !important;
+  font-weight: bold;
+  font-size: 1.5rem !important;
+}
+.measurement-right-menu {
+  display: flex;
+  align-items: center !important;
+  margin-left: auto;
+  color: $grayDark !important;
+  span:nth-child(1){
+    font-family: 'Helvetica Neue Bold' !important;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  span:nth-child(2){
+    margin-left: 5px;
+    color: $grayLight !important;
+    font-size: 0.7rem;
+  }
+  a {
+    margin-left: 5px;
+    color: $grayDark;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+}
+.measurements-title {
+  margin: 8px;
+  span {
+    font-family: 'Helvetica Neue Bold' !important;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: $grayLight !important;
+    margin-left: 10px;
+  }
+}
+
+.add-measure-button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  a {
+    color: white;
   }
 }

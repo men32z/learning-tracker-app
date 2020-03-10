@@ -13,7 +13,7 @@ function Menu({ isLogged, logout }) {
   return !isLogged ? '' : (
     <nav className="footer">
       <ul>
-        <li className={pathname === '/' ? 'active' : ''}>
+        <li className={pathname === '/' || pathname.match(/home/) ? 'active' : ''}>
           <Link to="/">
             <FontAwesomeIcon icon={['fas', 'home']} />
             <span>Home</span>

@@ -43,8 +43,8 @@ html,
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  font-size: 1rem;
-  @include general
+  font-size: inherit;
+  @include general;
   font-weight: normal;
 }
 
