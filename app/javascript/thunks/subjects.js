@@ -57,3 +57,27 @@ export const mySubjectsThunk = () => dispatch => {
       dispatch(statisticsSubjects(0));
     });
 };
+
+export const subjectRegisterThunk = subject => () => axios
+  .post(
+    '/api/register_subject',
+    {
+      subject_id: subject,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${Storage.getToken()}`,
+      },
+    },
+    { withCredentials: true },
+  )
+  .then(response => {
+    if (response.status === 200) {
+      // dispatch(mySubjectsOk(response.data));
+    }
+    return response.data;
+  })
+  .catch(error => {
+    Storage.checkToken(error);
+    // dispatch(statisticsSubjects(0));
+  });
