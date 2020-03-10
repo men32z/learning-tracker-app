@@ -7,11 +7,11 @@ import {
   myMeasurementsOk, myMeasurementsBad, myMeasurementsLoading,
 } from '../actions';
 
-export const deleteMeasureThunk =  ({id, subject_id}) => dispatch => {
+export const deleteMeasureThunk = ({ id, subjectId }) => dispatch => {
   dispatch(measureLoading());
   return axios
     .delete(
-      `/api/subjects/${subject_id}/measurements/${id}`,
+      `/api/subjects/${subjectId}/measurements/${id}`,
       {
         headers: {
           Authorization: `Bearer ${Storage.getToken()}`,
@@ -31,14 +31,16 @@ export const deleteMeasureThunk =  ({id, subject_id}) => dispatch => {
     });
 };
 
-export const updateMeasureThunk =  ({id, units, subject_id, date_m}) => dispatch => {
+export const updateMeasureThunk = ({
+  id, units, subjectId, dateM,
+}) => dispatch => {
   dispatch(measureLoading());
   return axios
     .patch(
-      `/api/subjects/${subject_id}/measurements/${id}`,
+      `/api/subjects/${subjectId}/measurements/${id}`,
       {
         units,
-        date_m
+        date_m: dateM,
       },
       {
         headers: {
@@ -59,7 +61,7 @@ export const updateMeasureThunk =  ({id, units, subject_id, date_m}) => dispatch
     });
 };
 
-export const fetchMeasureThunk =  ({id, subjectId}) => dispatch => {
+export const fetchMeasureThunk = ({ id, subjectId }) => dispatch => {
   dispatch(measureLoading());
   return axios
     .get(
@@ -83,14 +85,14 @@ export const fetchMeasureThunk =  ({id, subjectId}) => dispatch => {
     });
 };
 
-export const measureThunk =  ({units, subjectId, date_m}) => dispatch => {
+export const measureThunk = ({ units, subjectId, dateM }) => dispatch => {
   dispatch(measureLoading());
   return axios
     .post(
       `/api/subjects/${subjectId}/measurements`,
       {
         units,
-        date_m
+        date_m: dateM,
       },
       {
         headers: {

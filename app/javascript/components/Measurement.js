@@ -1,24 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Time from '../helpers/Time';
 import Circle from 'react-circle';
-import { colors } from '../data/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Time from '../helpers/Time';
+import { colors } from '../data/styles';
 /* eslint-disable-next-line */
 import { library } from '../assets/plugins/fas.js';
 
-export default function Measurement({ measurement: { units, date_m, id, subject_id } }) {
+export default function Measurement({
+  measurement: {
+    units, date_m: dateM, id, subject_id: subjectId,
+  },
+}) {
   const style = {
     font: 'bold 7rem Helvetica, Arial, sans-serif',
   };
   let progress = Math.floor((units * 100) / 60);
-  progress = progress < 100? progress : 100;
+  progress = progress < 100 ? progress : 100;
   return (
-    <Link to={`/subjects/${subject_id}/measurements/${id}`} className="subject-list-item bg-white">
+    <Link to={`/subjects/${subjectId}/measurements/${id}`} className="subject-list-item bg-white">
       <div className="measurement-circle">
         <Circle
-          responsive={true}
+          responsive
           progress={progress} // here 60 is the goal
           progressColor="#8EE289"
           textStyle={style}
@@ -26,12 +30,13 @@ export default function Measurement({ measurement: { units, date_m, id, subject_
         />
       </div>
       <div className="measurement-date">
-        <span>{Time.format(date_m)}</span>
+        <span>{Time.format(dateM)}</span>
       </div>
       <div className="measurement-right-menu">
-        <span>{units}</span><span>Minutes</span>
+        <span>{units}</span>
+        <span>Minutes</span>
 
-          <FontAwesomeIcon icon={['fas', 'angle-right']} />
+        <FontAwesomeIcon icon={['fas', 'angle-right']} />
       </div>
     </Link>
   );

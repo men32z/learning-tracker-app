@@ -19,6 +19,7 @@ class MeasurementsController < ApplicationController
   end
 
   def create
+    p params
     params = measurement_params
     params['user_id'] = current_user.id
     measure = @subject.measurements.create!(params)

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {Link, withRouter, useLocation } from 'react-router-dom';
+import { Link, withRouter, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 /* eslint-disable-next-line */
 import { library } from '../assets/plugins/fas.js';

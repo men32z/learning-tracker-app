@@ -38,7 +38,7 @@ const defaultProps = {
     },
     message: '',
     loading: false,
-  }
+  },
 };
 
 export default defaultProps;

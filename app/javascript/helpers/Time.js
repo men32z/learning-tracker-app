@@ -29,7 +29,7 @@ export default class Time {
   }
 
   static ts(d) {
-    return new Date(d.split('-').map(x => parseInt(x, 10)))
+    return new Date(d.split('-').map(x => parseInt(x, 10)));
   }
 
   static format(d) {

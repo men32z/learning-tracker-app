@@ -1,4 +1,5 @@
 import defaultProps from '../data/defaultProps';
+
 const measureReducer = (measure = {}, { type, payload }) => {
   switch (type) {
     case 'MEASURE_OK':
