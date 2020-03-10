@@ -2,10 +2,34 @@ import axios from 'axios';
 import Storage from '../helpers/Storage';
 
 import {
-  measureLoading, measureOk, measureBad,
+  measureLoading, measureOk, measureBad, newMeasure,
   statisticsMeasurements, statisticsLoadingMeasurements, statisticsMeasurementsBad,
   myMeasurementsOk, myMeasurementsBad, myMeasurementsLoading,
 } from '../actions';
+
+export const deleteMeasureThunk =  ({id, subject_id}) => dispatch => {
+  dispatch(measureLoading());
+  return axios
+    .delete(
+      `/api/subjects/${subject_id}/measurements/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${Storage.getToken()}`,
+        },
+      },
+      { withCredentials: true },
+    )
+    .then(response => {
+      if (response.status === 200) {
+        dispatch(newMeasure());
+      }
+      return response.data;
+    })
+    .catch(error => {
+      Storage.checkToken(error);
+      dispatch(measureBad());
+    });
+};
 
 export const updateMeasureThunk =  ({id, units, subject_id, date_m}) => dispatch => {
   dispatch(measureLoading());

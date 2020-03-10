@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { CircleSlider } from "react-circle-slider";
 import {newMeasure} from '../actions';
-import {measureThunk,  fetchMeasureThunk, updateMeasureThunk } from '../thunks/measurements';
+import {measureThunk,  fetchMeasureThunk,
+  deleteMeasureThunk, updateMeasureThunk } from '../thunks/measurements';
 import { mySubjectsThunk} from '../thunks/subjects';
 
 class Measure extends Component {
@@ -16,6 +17,7 @@ class Measure extends Component {
         subjectId: null,
         date: Time.today(),
       };
+      this.handleDelete = this.handleDelete.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleSelectChange = this.handleSelectChange.bind(this);
@@ -43,6 +45,16 @@ class Measure extends Component {
     handleSelectChange(event){
       this.setState({
           subjectId: event.target.value,
+      });
+    }
+
+    handleDelete(){
+      const {measure:{id, subject_id}, deleteMeasure} = this.props;
+      deleteMeasure({
+        id,
+        subject_id,
+      }).then(()=> {
+        this.props.history.push(`/my-subject/${subject_id}`);
       });
     }
 
@@ -109,7 +121,7 @@ class Measure extends Component {
                 showTooltip
               />
             </div>
-            <div className="row buttons">
+            <div className="row buttons last-div">
               {
                 !id ? ''
                 : (<button className="button-red" onClick={this.handleDelete}>Delete</button>)
@@ -139,6 +151,7 @@ const mapDispatchToProps = dispatch => ({
   fetchSubjects: () => dispatch(mySubjectsThunk()),
   fetchMeasure: (id) => dispatch(fetchMeasureThunk(id)),
   saveMeasure: (measure) => dispatch(measureThunk(measure)),
+  deleteMeasure: (measure) => dispatch(deleteMeasureThunk(measure)),
   updateMeasure: (measure) => dispatch(updateMeasureThunk(measure)),
 });
 
