@@ -6,6 +6,11 @@ class SubjectsController < ApplicationController
     json_response(@subjects)
   end
 
+  def my_subjects
+    @subjects = current_user.subjects
+    json_response(@subjects)
+  end
+
   def create
     @subject = Subject.create!(subject_params)
     json_response(@subject, :created)

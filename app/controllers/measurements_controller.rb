@@ -1,10 +1,17 @@
 class MeasurementsController < ApplicationController
-  before_action :set_subject
+  before_action :set_subject, except: %i[my_measurements]
   before_action :set_subject_measurement, only: %i[show update destroy]
 
   def index
-    @measurements = Measurement.where(subject_id: @subject.id, user_id: current_user.id)
+    @measurements = Measurement
+      .where(subject_id: @subject.id, user_id: current_user.id).last_week.order(id: :desc)
     json_response(@measurements)
+  end
+
+  def my_measurements
+    measurements = current_user.measurements
+      .date_m(params[:date] || '')
+    json_response(measurements)
   end
 
   def show
@@ -12,10 +19,11 @@ class MeasurementsController < ApplicationController
   end
 
   def create
+    p params
     params = measurement_params
     params['user_id'] = current_user.id
-    @subject.measurements.create!(params)
-    json_response(@subject, :created)
+    measure = @subject.measurements.create!(params)
+    json_response(measure, :created)
   end
 
   def update

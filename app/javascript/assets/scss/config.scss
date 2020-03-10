@@ -1,0 +1,98 @@
+// imports
+
+// fonts
+@font-face {
+    font-family: 'Helvetica Neue Bold';
+    src: url(../fonts/helvetica-neue-bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Light';
+    src: url(../fonts/helvetica-neue-light.otf) format('opentype');
+}
+
+// colors
+
+$blue: #8ED3F1;
+$blueLight: #B3E1F6;
+$blueDark: #42B5E8;
+
+$gray: #8090A0;
+$grayLight: #8796A6;
+$grayDark: #74879B;
+
+$green: #C1EFBE;
+$greenLight: #D5F4D4;
+$greenDark: #ACE9A9;
+
+// mixins
+
+@mixin headline {
+  font-family: 'Helvetica Neue Bold';
+}
+@mixin general {
+  font-family: 'Helvetica Neue Light';
+}
+@mixin inputStyle {
+  color: #888888;
+  padding-left: 15px;
+  height: 45px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 6px;
+  border: solid 1px #e8e8e8;
+  background-color: #ffffff;
+}
+
+// resets
+
+body,
+html,
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-size: inherit;
+  @include general;
+  font-weight: normal;
+}
+
+b {
+  font-weight: bold;
+}
+
+h1, h2, h3, h4, h5 {
+  @include headline
+}
+
+// usefull classes
+
+.bg-dark {
+  background-color: $grayLight;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-blue {
+  background-color: $blueLight;
+}
+
+.bg-gray {
+  background-color: #F3F4F6;
+}
+
+.container {
+  background-size: 100% 100%;
+  height: 100vh;
+}
+
+.row {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 300px;
+  max-width: 600px;
+}

@@ -8,9 +8,9 @@ RSpec.describe 'Users', type: :request do
   end
 
   # User signup test suite
-  describe 'POST /signup' do
+  describe 'POST /api/signup' do
     context 'when valid request' do
-      before { post '/signup', params: valid_attributes.to_json, headers: headers }
+      before { post '/api/signup', params: valid_attributes.to_json, headers: headers }
 
       it 'creates a new user' do
         expect(response).to have_http_status(201)
@@ -26,7 +26,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     context 'when invalid request' do
-      before { post '/signup', params: {}, headers: headers }
+      before { post '/api/signup', params: {}, headers: headers }
 
       it 'does not create a new user' do
         expect(response).to have_http_status(422)
@@ -34,9 +34,13 @@ RSpec.describe 'Users', type: :request do
 
       it 'returns failure message' do
         expect(json['message'])
-          .to match(/(Password can't be blank).*(Name can't be blank)/)
+          .to match(/(Name can't be blank)/)
         expect(json['message'])
-          .to match(/(Email can't be blank).*(digest can't be blank)/)
+          .to match(/(Password can't be blank)/)
+        expect(json['message'])
+          .to match(/(digest can't be blank)/)
+        expect(json['message'])
+          .to match(/(Email can't be blank)/)
       end
     end
   end

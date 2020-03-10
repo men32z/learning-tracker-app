@@ -5,11 +5,11 @@ RSpec.describe 'UserSubjects', type: :request do
   let!(:subjects) { create_list(:subject, 10) }
   let(:headers) { valid_headers }
 
-  describe 'POST /register_subject' do
+  describe 'POST /api/register_subject' do
     let(:valid_attributes) { { subject_id: subjects.last.id }.to_json }
 
     context 'when the request is valid' do
-      before { post '/register_subject', params: valid_attributes, headers: headers }
+      before { post '/api/register_subject', params: valid_attributes, headers: headers }
 
       it 'creates a user subject relationship' do
         expect(json['id']).to eq(subjects.last.id)
@@ -21,7 +21,7 @@ RSpec.describe 'UserSubjects', type: :request do
     end
 
     context 'when the request is duplicated' do
-      before { post '/register_subject', params: valid_attributes, headers: headers }
+      before { post '/api/register_subject', params: valid_attributes, headers: headers }
 
       it 'creates a user subject just the first time relationship' do
         expect(json['id']).to eq(subjects.last.id)
@@ -32,7 +32,7 @@ RSpec.describe 'UserSubjects', type: :request do
       end
 
       it 'try to duplicate' do
-        post '/register_subject', params: valid_attributes, headers: headers
+        post '/api/register_subject', params: valid_attributes, headers: headers
         expect(json['id']).to eq(subjects.last.id)
         expect(response).to have_http_status(200)
         expect(user.subjects.count).to eq(1)
@@ -41,7 +41,7 @@ RSpec.describe 'UserSubjects', type: :request do
 
     context 'when the request is invalid' do
       let(:invalid_attributes) { { subject_id: 0 }.to_json }
-      before { post '/subjects', params: invalid_attributes, headers: headers }
+      before { post '/api/subjects', params: invalid_attributes, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -49,12 +49,12 @@ RSpec.describe 'UserSubjects', type: :request do
     end
   end
 
-  describe 'DELETE /unregister_subject/:id' do
+  describe 'DELETE /api/unregister_subject/:id' do
     let(:subject_valid) { user.subjects << subjects.first }
     let(:subject_valid2) { user.subjects << subjects.first }
 
     context 'when the request is valid' do
-      before { delete "/unregister_subject/#{subject_valid[0].id}", headers: headers }
+      before { delete "/api/unregister_subject/#{subject_valid[0].id}", headers: headers }
 
       it 'remove relationship user - subject' do
         expect(user.subjects.count).to eq(0)
@@ -66,7 +66,7 @@ RSpec.describe 'UserSubjects', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { delete '/unregister_subject/0', headers: headers }
+      before { delete '/api/unregister_subject/0', headers: headers }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
