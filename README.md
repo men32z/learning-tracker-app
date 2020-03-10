@@ -20,6 +20,12 @@ This project has these features:
 - Heroku
 
 ## Live Demo
+### Manual test
+you can create an account or you can use this credentials.
+```
+email: 'test@test.com'
+password: '123123'
+```
 
 [Live Demo Link](https://men32z-learning-tracker-app.herokuapp.com/)
 
@@ -64,8 +70,6 @@ http://localhost:3000/
 ```
 rspec
 ```
-
-
 
 ## Author
 
