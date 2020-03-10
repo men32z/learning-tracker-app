@@ -7,6 +7,58 @@ import {
   myMeasurementsOk, myMeasurementsBad, myMeasurementsLoading,
 } from '../actions';
 
+export const updateMeasureThunk =  ({id, units, subject_id, date_m}) => dispatch => {
+  dispatch(measureLoading());
+  return axios
+    .patch(
+      `/api/subjects/${subject_id}/measurements/${id}`,
+      {
+        units,
+        date_m
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${Storage.getToken()}`,
+        },
+      },
+      { withCredentials: true },
+    )
+    .then(response => {
+      if (response.status === 200) {
+        dispatch(measureOk(response.data));
+      }
+      return response.data;
+    })
+    .catch(error => {
+      Storage.checkToken(error);
+      dispatch(measureBad());
+    });
+};
+
+export const fetchMeasureThunk =  ({id, subjectId}) => dispatch => {
+  dispatch(measureLoading());
+  return axios
+    .get(
+      `/api/subjects/${subjectId}/measurements/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${Storage.getToken()}`,
+        },
+      },
+      { withCredentials: true },
+    )
+    .then(response => {
+      if (response.status === 200) {
+        dispatch(measureOk(response.data));
+      }
+      return response.data;
+    })
+    .catch(error => {
+      Storage.checkToken(error);
+      dispatch(measureBad());
+    });
+};
+
 export const measureThunk =  ({units, subjectId, date_m}) => dispatch => {
   dispatch(measureLoading());
   return axios

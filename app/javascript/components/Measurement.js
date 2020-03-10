@@ -8,14 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 /* eslint-disable-next-line */
 import { library } from '../assets/plugins/fas.js';
 
-export default function Measurement({ measurement: { units, date_m, id } }) {
+export default function Measurement({ measurement: { units, date_m, id, subject_id } }) {
   const style = {
     font: 'bold 7rem Helvetica, Arial, sans-serif',
   };
   let progress = Math.floor((units * 100) / 60);
   progress = progress < 100? progress : 100;
   return (
-    <Link to={`/measurements/${id}`} className="subject-list-item bg-white">
+    <Link to={`/subjects/${subject_id}/measurements/${id}`} className="subject-list-item bg-white">
       <div className="measurement-circle">
         <Circle
           responsive={true}
@@ -42,5 +42,6 @@ Measurement.propTypes = {
     id: PropTypes.number,
     units: PropTypes.number,
     date_m: PropTypes.string,
+    subject_id: PropTypes.number,
   }).isRequired,
 };

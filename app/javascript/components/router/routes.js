@@ -16,7 +16,10 @@ function Routes({ isLogged }) {
       <PrivateRoute exact path="/" isLogged={isLogged}>
         <Home />
       </PrivateRoute>
-      <PrivateRoute exact path="/measurements/new" isLogged={isLogged}>
+      <PrivateRoute key="measureNew" exact path="/measurements/new" isLogged={isLogged}>
+        <Measure />
+      </PrivateRoute>
+      <PrivateRoute key="measureEdit" path="/subjects/:subjectId/measurements/:id" isLogged={isLogged}>
         <Measure />
       </PrivateRoute>
       <PrivateRoute path="/home/:date" isLogged={isLogged}>

@@ -8,7 +8,7 @@ import { library } from '../assets/plugins/fas.js';
 import { logout } from '../actions';
 import Storage from '../helpers/Storage';
 
-function Menu({ isLogged, logout }) {
+function Menu({ isLogged, logout, newMeasure }) {
   const { pathname } = useLocation();
   return !isLogged ? '' : (
     <nav className="footer">

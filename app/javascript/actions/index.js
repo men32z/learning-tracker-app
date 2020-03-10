@@ -12,6 +12,12 @@ export function measureBad(data) {
   };
 }
 
+export function newMeasure() {
+  return {
+    type: 'NEW_MEASURE',
+  };
+}
+
 export function measureLoading() {
   return {
     type: 'MEASURE_LOADING',

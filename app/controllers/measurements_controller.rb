@@ -4,7 +4,7 @@ class MeasurementsController < ApplicationController
 
   def index
     @measurements = Measurement
-      .where(subject_id: @subject.id, user_id: current_user.id).last_week
+      .where(subject_id: @subject.id, user_id: current_user.id).last_week.order(id: :desc)
     json_response(@measurements)
   end
 

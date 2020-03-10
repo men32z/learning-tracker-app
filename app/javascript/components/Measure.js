@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { CircleSlider } from "react-circle-slider";
-import {measureThunk} from '../thunks/measurements';
-import { mySubjectsThunk } from '../thunks/subjects';
+import {newMeasure} from '../actions';
+import {measureThunk,  fetchMeasureThunk, updateMeasureThunk } from '../thunks/measurements';
+import { mySubjectsThunk} from '../thunks/subjects';
 
 class Measure extends Component {
     constructor(props) {
@@ -22,10 +23,16 @@ class Measure extends Component {
     }
 
     componentDidMount(){
-      if(this.props.match.params.subject_id){
-        this.subjectId = this.props.match.params.subject_id;
+      const {match, fetchMeasure, fetchSubjects, newMeasure} = this.props;
+      if(this.props.match.path=== '/measurements/new'){
+        newMeasure();
+        if(match.params.subjectId){
+          this.setState({subjectId:match.params.subjectId});
+        } else {
+          fetchSubjects();
+        }
       } else {
-        this.props.fetchSubjects();
+        fetchMeasure({id: match.params.id, subjectId: match.params.subjectId});
       }
     }
 
@@ -34,7 +41,6 @@ class Measure extends Component {
     }
 
     handleSelectChange(event){
-      console.log(event.target.value);
       this.setState({
           subjectId: event.target.value,
       });
@@ -48,10 +54,17 @@ class Measure extends Component {
 
     handleSubmit(){
       const {subjectId, value, date} = this.state;
-      const {measure:{id}, saveMeasure, subjects} = this.props;
+      const {measure:{id, subject_id}, saveMeasure, updateMeasure, subjects} = this.props;
 
       if(id){
-
+        updateMeasure({
+          id,
+          subject_id,
+          units: value,
+          date_m: date,
+        }).then(()=> {
+          this.props.history.push(`/my-subject/${subject_id}`);
+        });
       } else {
         let subj = subjectId || subjects[0].id;
         saveMeasure({
@@ -68,7 +81,7 @@ class Measure extends Component {
     render() {
         const {measure: {id}} = this.props;
         const { value, subjectId } = this.state;
-        const measureDate = id ? '' : (
+        const measureDate = this.props.measure.id ? '' : (
           <div className="row measure-date">
             <span style={{paddingBottom: '5px'}}>Pick a date, default is today</span>
             <input type="date" onChange={this.handleDateChange} value={this.state.date}/>
@@ -79,7 +92,7 @@ class Measure extends Component {
             {measureDate}
             <div className="row measure-date">
               {
-                subjectId ? '' : (
+                subjectId || this.props.measure.subject_id ? '' : (
                   <select onChange={this.handleSelectChange}>
                     {this.props.subjects.map(x=>(
                       <option key={x.id} value={x.id}>{x.name}</option>
@@ -90,7 +103,7 @@ class Measure extends Component {
             </div>
             <div className="row circle">
               <CircleSlider
-                value={value}
+                value={this.props.measure.units}
                 size={300}
                 onChange={this.handleChange}
                 showTooltip
@@ -122,8 +135,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  newMeasure: () => dispatch(newMeasure()),
   fetchSubjects: () => dispatch(mySubjectsThunk()),
+  fetchMeasure: (id) => dispatch(fetchMeasureThunk(id)),
   saveMeasure: (measure) => dispatch(measureThunk(measure)),
+  updateMeasure: (measure) => dispatch(updateMeasureThunk(measure)),
 });
 
 
