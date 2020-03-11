@@ -3,7 +3,7 @@ import Time from '../helpers/Time';
 
 const defaultProps = {
   auth: {
-    isLogged: (Storage.getToken() !== '' && Storage.getToken() !== 'undefined'),
+    isLogged: (Storage.getToken() !== '' && typeof Storage.getToken() !== 'undefined'),
     message: '',
   },
   subject: {
