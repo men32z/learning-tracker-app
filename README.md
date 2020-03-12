@@ -3,14 +3,19 @@
 > learning is a process that never ends, now in the globalized world studying is a matter of every day, even if you are a doctor or a programmer and want to be up to date or if you just want to learn a new language, studying is something that you should never stop doing.
 so this app helps you to don't give up and track your progress every day.
 
- <!-- ![screenshot]()  -->
+ ![login](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s1.png)
+ ![home dashboard](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s2.png)
+ ![create measurement](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s3.png)
+ ![list measurements](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s4.png)
+ ![edit](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s5.png)
+ ![subscribe subject](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s7.png)
 
-<!--
-This project has these features:
-  - asdfasdf.
-  - asdfasdf asdfasdf asdfasdf.
-  - asdfasdfasd.
--->
+## This project has these features:
+  - You can Log in and create an account.
+  - Can subscribe to subjects to measure them (would be able to create them in the next version).
+  - It shows a dashboard with subjects and statistics with goals(would be added a functionality to modify goals in the next version).
+  - You can measure the subjects and can list the measurements. 
+  - You can edit and delete measurements.
 
 ## Built With
 
