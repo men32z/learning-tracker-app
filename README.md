@@ -1,7 +1,6 @@
 # Learning Tracker APP
 
-> learning is a process that never ends, now in the globalized world studying is a matter of every day, even if you are a doctor or a programmer and want to be up to date or if you just want to learn a new language, studying is something that you should never stop doing.
-so this app helps you to don't give up and track your progress every day.
+> Learning is a process that never ends. Today in the globalized world, studying is a daily matter; even doctors and programmers need to stay up to date, and whether you want to maintain your knowledge or just want to learn a new language, studying is something that you should never stop doing. This app helps you maintain motivation and track your progress every day.
 
  ![login](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s1.png)
  ![home dashboard](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s2.png)
@@ -11,9 +10,9 @@ so this app helps you to don't give up and track your progress every day.
  ![subscribe subject](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s7.png)
 
 ## This project has these features:
-  - You can Log in and create an account.
-  - Can subscribe to subjects to measure them (would be able to create them in the next version).
-  - It shows a dashboard with subjects and statistics with goals(would be added a functionality to modify goals in the next version).
+  - You can log in and create an account.
+  - Users can subscribe to subjects in order to measure them (and will be able to create subjects in future versions). 
+  - The app dashboard showcases subjects, statistics, and goals (future versions will add the ability to modify goals).
   - You can measure the subjects and can list the measurements. 
   - You can edit and delete measurements.
 
@@ -26,7 +25,7 @@ so this app helps you to don't give up and track your progress every day.
 
 ## Live Demo
 ### Manual test
-you can create an account or you can use this credentials.
+you can create an account or you can use these credentials.
 ```
 email: 'test@test.com'
 password: '123123'
@@ -95,7 +94,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Final Capstone Project [Microverse] (https://www.microverse.org/)
+- Final Capstone Project [Microverse](https://www.microverse.org/)
 
 ### Credits
 
