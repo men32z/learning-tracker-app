@@ -1,16 +1,20 @@
 # Learning Tracker APP
 
-> learning is a process that never ends, now in the globalized world studying is a matter of every day, even if you are a doctor or a programmer and want to be up to date or if you just want to learn a new language, studying is something that you should never stop doing.
-so this app helps you to don't give up and track your progress every day.
+> Learning is a process that never ends. Today in the globalized world, studying is a daily matter; even doctors and programmers need to stay up to date, and whether you want to maintain your knowledge or just want to learn a new language, studying is something that you should never stop doing. This app helps you maintain motivation and track your progress every day.
 
- <!-- ![screenshot]()  -->
+ ![login](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s1.png)
+ ![home dashboard](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s2.png)
+ ![create measurement](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s3.png)
+ ![list measurements](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s4.png)
+ ![edit](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s5.png)
+ ![subscribe subject](https://raw.githubusercontent.com/men32z/learning-tracker-app/development/docs/s7.png)
 
-<!--
-This project has these features:
-  - asdfasdf.
-  - asdfasdf asdfasdf asdfasdf.
-  - asdfasdfasd.
--->
+## This project has these features:
+  - You can log in and create an account.
+  - Users can subscribe to subjects in order to measure them (and will be able to create subjects in future versions). 
+  - The app dashboard showcases subjects, statistics, and goals (future versions will add the ability to modify goals).
+  - You can measure the subjects and can list the measurements. 
+  - You can edit and delete measurements.
 
 ## Built With
 
@@ -20,6 +24,12 @@ This project has these features:
 - Heroku
 
 ## Live Demo
+### Manual test
+you can create an account or you can use these credentials.
+```
+email: 'test@test.com'
+password: '123123'
+```
 
 [Live Demo Link](https://men32z-learning-tracker-app.herokuapp.com/)
 
@@ -65,8 +75,6 @@ http://localhost:3000/
 rspec
 ```
 
-
-
 ## Author
 
 👤 **Luis Preza**
@@ -86,7 +94,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Final Capstone Project [Microverse] (https://www.microverse.org/)
+- Final Capstone Project [Microverse](https://www.microverse.org/)
 
 ### Credits
 
